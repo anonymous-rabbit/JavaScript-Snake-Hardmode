@@ -289,7 +289,7 @@ SNAKE.Snake = SNAKE.Snake || (function() {
             } else if (grid[newHead.row][newHead.col] === playingBoard.getGridFoodValue()) {
                 grid[newHead.row][newHead.col] = 1;
                 me.eatFood();
-                playingBoard.myFood.randomlyPlaceFood();
+                playingBoard.randomlyPlaceFood();
                 setTimeout(function(){me.go();}, snakeSpeed);
             }
         };
@@ -945,6 +945,10 @@ SNAKE.Board = SNAKE.Board || (function() {
             elmLengthPanel.innerHTML = "Length: " + mySnake.snakeLength;
             myFood.randomlyPlaceFood();
         };
+        
+        me.randomlyPlaceFood = function(){
+            myFood.randomlyPlaceFood();
+        }
         
         /**
         * This method is called when the snake dies.
