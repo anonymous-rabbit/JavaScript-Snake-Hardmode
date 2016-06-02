@@ -262,7 +262,8 @@ SNAKE.Snake = SNAKE.Snake || (function() {
             if ( grid[newHead.row] && grid[newHead.row][newHead.col] ) {
                 grid[newHead.row][newHead.col] = 0;
             }
-        
+            
+            var oldDirection = currentDirection;
             if (moveQueue.length){
                 myDirection = currentDirection = moveQueue.pop();
             }
@@ -283,13 +284,15 @@ SNAKE.Snake = SNAKE.Snake || (function() {
 
             if (grid[newHead.row][newHead.col] === 0) {
                 grid[newHead.row][newHead.col] = 1;
+                if(myDirection != oldDirection){
+                    playingBoard.randomlyPlaceFood();
+                }
                 setTimeout(function(){me.go();}, snakeSpeed);
             } else if (grid[newHead.row][newHead.col] > 0) {
                 me.handleDeath();
             } else if (grid[newHead.row][newHead.col] === playingBoard.getGridFoodValue()) {
                 grid[newHead.row][newHead.col] = 1;
                 me.eatFood();
-                playingBoard.randomlyPlaceFood();
                 setTimeout(function(){me.go();}, snakeSpeed);
             }
         };
