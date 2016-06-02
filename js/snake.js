@@ -289,7 +289,7 @@ SNAKE.Snake = SNAKE.Snake || (function() {
                     if(chance > 0.6){
                         playingBoard.randomlyPlaceFood();
                     }
-                }else if(chance > 0.9) {
+                }else if(chance > 0.99) {
                     playingBoard.randomlyPlaceFood();
                 }
                 setTimeout(function(){me.go();}, snakeSpeed);
