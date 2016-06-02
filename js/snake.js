@@ -289,6 +289,7 @@ SNAKE.Snake = SNAKE.Snake || (function() {
             } else if (grid[newHead.row][newHead.col] === playingBoard.getGridFoodValue()) {
                 grid[newHead.row][newHead.col] = 1;
                 me.eatFood();
+                playingBoard.myFood.randomlyPlaceFood();
                 setTimeout(function(){me.go();}, snakeSpeed);
             }
         };
