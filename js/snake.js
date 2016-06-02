@@ -285,7 +285,10 @@ SNAKE.Snake = SNAKE.Snake || (function() {
             if (grid[newHead.row][newHead.col] === 0) {
                 grid[newHead.row][newHead.col] = 1;
                 if(myDirection != oldDirection){
-                    playingBoard.randomlyPlaceFood();
+                    var chance = Math.random();
+                    if(chance > 0.6){
+                        playingBoard.randomlyPlaceFood();
+                    }
                 }
                 setTimeout(function(){me.go();}, snakeSpeed);
             } else if (grid[newHead.row][newHead.col] > 0) {
